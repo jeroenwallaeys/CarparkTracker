@@ -2,11 +2,11 @@
 
 namespace CarparkTracker.Common.Containers
 {
-    public class Resolver
+    public static class Resolver
     {
-        public void Get<TType>()
+        public static TType Get<TType>()
         {
-            CompositionRoot.Kernel.Get<TType>();
+            return CompositionRoot.Kernel.Get<TType>();
         }
     }
 }

@@ -4,4 +4,8 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CarparkTracker.Business.Handlers.Contracts\CarparkTracker.Business.Handlers.Contracts.csproj" />
+  </ItemGroup>
+
 </Project>

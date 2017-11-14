@@ -25,7 +25,8 @@ namespace CarparkTracker.Droid
 			base.OnCreate (bundle);
 
 			global::Xamarin.Forms.Forms.Init (this, bundle);
-			LoadApplication (new CarparkTracker.App ());
+
+            LoadApplication (new CarparkTracker.App ());
 		}
 
         private void InitializeContainers()
