@@ -6,6 +6,9 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Ninject;
+using CarparkTracker.Common.Containers;
+using CarparkTracker.Business.Bootstrapper;
 
 namespace CarparkTracker.Droid
 {
@@ -14,6 +17,8 @@ namespace CarparkTracker.Droid
 	{
 		protected override void OnCreate (Bundle bundle)
 		{
+            InitializeContainers();
+
 			TabLayoutResource = Resource.Layout.Tabbar;
 			ToolbarResource = Resource.Layout.Toolbar; 
 
@@ -22,6 +27,12 @@ namespace CarparkTracker.Droid
 			global::Xamarin.Forms.Forms.Init (this, bundle);
 			LoadApplication (new CarparkTracker.App ());
 		}
+
+        private void InitializeContainers()
+        {
+            var kernel = new StandardKernel(new Module());
+            CompositionRoot.Kernel = kernel;
+        }
 	}
 }
 
