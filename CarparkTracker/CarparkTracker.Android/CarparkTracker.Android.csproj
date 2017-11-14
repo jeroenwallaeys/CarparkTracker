@@ -54,6 +54,9 @@
     </Reference>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
+    <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Ninject.3.3.4\lib\netstandard2.0\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -133,6 +136,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CarparkTracker.Business.Bootstrapper\CarparkTracker.Business.Bootstrapper.csproj">
+      <Project>{740C80B7-F5B5-430D-90D4-B7935BDEDEA2}</Project>
+      <Name>CarparkTracker.Business.Bootstrapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CarparkTracker.Common.Containers\CarparkTracker.Common.Containers.csproj">
+      <Project>{599D8482-C2DA-46D0-BCD8-18659887DFF3}</Project>
+      <Name>CarparkTracker.Common.Containers</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="..\CarparkTracker\CarparkTracker.projitems" Label="Shared" Condition="Exists('..\CarparkTracker\CarparkTracker.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
