@@ -18,7 +18,6 @@ namespace CarparkTracker
 
 		protected override void OnStart ()
 		{
-            InitializeContainer();
 		}
 
         protected override void OnSleep ()
@@ -30,10 +29,5 @@ namespace CarparkTracker
 		{
 			// Handle when your app resumes
 		}
-
-        private void InitializeContainer()
-        {
-            var kernel = new StandardKernel();
-        }
     }
 }
