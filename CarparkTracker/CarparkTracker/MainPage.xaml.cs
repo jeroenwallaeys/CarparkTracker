@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CarparkTracker.Common.Containers;
+using CarparkTracker.Presentation.ViewModels.Contracts;
 using Xamarin.Forms;
 
 namespace CarparkTracker
@@ -12,6 +9,7 @@ namespace CarparkTracker
 		public MainPage()
 		{
 			InitializeComponent();
+            BindingContext = Resolver.Get<ICarparsViewModel>();
 		}
 	}
 }

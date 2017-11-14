@@ -134,6 +134,24 @@
     </Reference>
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CarparkTracker.Common.Containers\CarparkTracker.Common.Containers.csproj">
+      <Project>{599d8482-c2da-46d0-bcd8-18659887dff3}</Project>
+      <Name>CarparkTracker.Common.Containers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CarparkTracker.Presentation.Entities\CarparkTracker.Presentation.Entities.csproj">
+      <Project>{edf9196a-6cd2-4229-b04e-e8a0aff0f2cf}</Project>
+      <Name>CarparkTracker.Presentation.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CarparkTracker.Presentation.ViewModels.Contracts\CarparkTracker.Presentation.ViewModels.Contracts.csproj">
+      <Project>{bb34e66c-c9d7-4e15-81b7-c177ecdbd37e}</Project>
+      <Name>CarparkTracker.Presentation.ViewModels.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CarparkTracker.Presentation.ViewModels\CarparkTracker.Presentation.ViewModels.csproj">
+      <Project>{99c205af-8042-4725-a0fc-03a64e2039df}</Project>
+      <Name>CarparkTracker.Presentation.ViewModels</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="..\CarparkTracker\CarparkTracker.projitems" Label="Shared" Condition="Exists('..\CarparkTracker\CarparkTracker.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

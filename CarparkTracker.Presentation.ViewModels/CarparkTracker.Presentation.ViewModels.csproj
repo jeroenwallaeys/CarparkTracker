@@ -5,14 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Ninject" Version="3.3.4" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\CarparkTracker.Business.Handlers\CarparkTracker.Business.Handlers.csproj" />
+    <ProjectReference Include="..\CarparkTracker.Business.Handlers.Contracts\CarparkTracker.Business.Handlers.Contracts.csproj" />
+    <ProjectReference Include="..\CarparkTracker.Presentation.Entities\CarparkTracker.Presentation.Entities.csproj" />
     <ProjectReference Include="..\CarparkTracker.Presentation.Mappers\CarparkTracker.Presentation.Mappers.csproj" />
     <ProjectReference Include="..\CarparkTracker.Presentation.ViewModels.Contracts\CarparkTracker.Presentation.ViewModels.Contracts.csproj" />
-    <ProjectReference Include="..\CarparkTracker.Presentation.ViewModels\CarparkTracker.Presentation.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>

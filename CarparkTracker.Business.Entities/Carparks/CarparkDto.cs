@@ -1,6 +1,6 @@
 ﻿namespace CarparkTracker.Business.Entities.Carparks
 {
-    public class Carpark
+    public class CarparkDto
     {
         public string Name { get; set; }
         public string AddressLine { get; set; }

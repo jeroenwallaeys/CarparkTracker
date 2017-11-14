@@ -5,7 +5,7 @@ namespace CarparkTracker.Business.Entities.Carparks
     public class Agency
     {
         [XmlArray("Carparks")]
-        public Carpark[] Carparks { get; set; }
+        public CarparkDto[] Carparks { get; set; }
 
         public string Name { get; set; }
         public string AddressLine { get; set; }

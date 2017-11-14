@@ -1,7 +1,10 @@
-﻿using Ninject.Modules;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using CarparkTracker.Business.Handlers;
+using CarparkTracker.Business.Handlers.Contracts;
+using CarparkTracker.Presentation.Mappers;
+using CarparkTracker.Presentation.Mappers.Contracts;
+using CarparkTracker.Presentation.ViewModels;
+using CarparkTracker.Presentation.ViewModels.Contracts;
+using Ninject.Modules;
 
 namespace CarparkTracker.Business.Bootstrapper
 {
@@ -9,7 +12,11 @@ namespace CarparkTracker.Business.Bootstrapper
     {
         public override void Load()
         {
-            
+            Bind<ICarparkHandler>().To<CarparkHandler>();
+            Bind<ICoordinateDistanceHandler>().To<CoordinateDistanceHandler>();
+            Bind<IWebRequestHandler>().To<WebRequestHandler>();
+            Bind<ICarparkMapper>().To<CarparkMapper>();
+            Bind<ICarparsViewModel>().To<CarparksViewModel>();
         }
     }
 }
