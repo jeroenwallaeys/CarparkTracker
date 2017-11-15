@@ -1,4 +1,4 @@
-﻿using Ninject;
+﻿using Autofac;
 
 namespace CarparkTracker.Common.Containers
 {
@@ -6,7 +6,10 @@ namespace CarparkTracker.Common.Containers
     {
         public static TType Get<TType>()
         {
-            return CompositionRoot.Kernel.Get<TType>();
+            using ( var scope = CompositionRoot.Container.BeginLifetimeScope() )
+            {
+                return scope.Resolve<TType>();
+            }
         }
     }
 }

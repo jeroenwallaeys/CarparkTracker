@@ -1,21 +1,21 @@
-﻿using Ninject;
+﻿using Autofac;
 
 namespace CarparkTracker.Common.Containers
 {
     public class CompositionRoot
     {
-        private static IKernel _kernel;
+        private static IContainer _container;
 
-        public static IKernel Kernel
+        public static IContainer Container
         {
             get
             {
-                return _kernel;
+                return _container;
             }
             set
             {
-                if ( _kernel == null || _kernel != value )
-                    _kernel = value;
+                if ( _container == null || _container != value )
+                    _container = value;
             }
         }
 

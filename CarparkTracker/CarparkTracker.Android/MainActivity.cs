@@ -6,10 +6,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
-using Ninject;
 using CarparkTracker.Common.Containers;
 using CarparkTracker.Business.Bootstrapper;
-using Ninject.Modules;
 using System.Collections.Generic;
 
 namespace CarparkTracker.Droid
@@ -33,10 +31,7 @@ namespace CarparkTracker.Droid
 
         private void InitializeContainers()
         {
-            var module = new Module();
-            var kernel = new StandardKernel();
-            kernel.Load(new List<INinjectModule>() { module });
-            CompositionRoot.Kernel = kernel;
+            CompositionRoot.Container = new AutofacBuilder().CreateContainer();
         }
 	}
 }

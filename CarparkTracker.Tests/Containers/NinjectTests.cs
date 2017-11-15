@@ -1,9 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CarparkTracker.Common.Containers;
 using CarparkTracker.Business.Handlers.Contracts;
-using Ninject;
 using CarparkTracker.Business.Handlers;
 using System;
+using CarparkTracker.Business.Bootstrapper;
+using Autofac.Core.Registration;
 
 namespace CarparkTracker.Tests.Containers
 {
@@ -13,9 +14,7 @@ namespace CarparkTracker.Tests.Containers
         [TestMethod]
         public void ResolveDependencyTest()
         {
-            var kernel = new StandardKernel();
-            kernel.Bind<IWebRequestHandler>().To<WebRequestHandler>();
-            CompositionRoot.Kernel = kernel;
+            CompositionRoot.Container = new AutofacBuilder().CreateContainer();
 
             var dependency = Resolver.Get<IWebRequestHandler>();
 
@@ -23,13 +22,14 @@ namespace CarparkTracker.Tests.Containers
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ActivationException))]
+        [ExpectedException(typeof(ComponentNotRegisteredException))]
         public void ResolveUnknownDependencyTest()
         {
-            var kernel = new StandardKernel();
-            CompositionRoot.Kernel = kernel;
+            CompositionRoot.Container = new AutofacBuilder().CreateContainer();
 
-            var dependency = Resolver.Get<IWebRequestHandler>();
+            var dependency = Resolver.Get<IDoNotExist>();
         }
+
+        internal interface IDoNotExist { }
     }
 }
