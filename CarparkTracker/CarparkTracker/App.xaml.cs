@@ -13,7 +13,7 @@ namespace CarparkTracker
 		{
 			InitializeComponent();
 
-			MainPage = new CarparkTracker.MainPage();
+            MainPage = GetMainPage();//new CarparkTracker.MainPage();
 		}
 
 		protected override void OnStart ()
@@ -29,5 +29,10 @@ namespace CarparkTracker
 		{
 			// Handle when your app resumes
 		}
+
+        public static Page GetMainPage()
+        {
+            return new NavigationPage(new MainPage());
+        }
     }
 }

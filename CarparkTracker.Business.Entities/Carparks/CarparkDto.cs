@@ -1,4 +1,6 @@
-﻿namespace CarparkTracker.Business.Entities.Carparks
+﻿using System.Xml.Serialization;
+
+namespace CarparkTracker.Business.Entities.Carparks
 {
     public class CarparkDto
     {

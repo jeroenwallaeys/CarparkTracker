@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             
+             x:Class="CarparkTracker.CarparkDetailPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Name"/>
+            <Label Text="{Binding Name}"/>
+            
+            <Label Text="Name"/>
+            <Label Text="{Binding Name}"/>
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+
+<!-- the parking’s name, address, contact details and that shows a map with the parking’s location. 
+    
+    xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+                <maps:Map WidthRequest="300" HeightRequest="200" IsShowingUser="true" MapType="Hybrid"></maps:Map>
+    -->
