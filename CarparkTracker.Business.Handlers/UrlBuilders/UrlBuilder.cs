@@ -1,4 +1,5 @@
 ﻿using CarparkTracker.Business.Entities;
+using CarparkTracker.Common.Entities;
 using System.Web;
 
 namespace CarparkTracker.Business.Handlers.UrlBuilders

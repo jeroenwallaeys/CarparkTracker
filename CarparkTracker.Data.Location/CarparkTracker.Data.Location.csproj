@@ -5,9 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CarparkTracker.Business.Entities\CarparkTracker.Business.Entities.csproj" />
+    <PackageReference Include="Xam.Plugin.Geolocator" Version="4.1.3" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CarparkTracker.Common.Entities\CarparkTracker.Common.Entities.csproj" />
-    <ProjectReference Include="..\CarparkTracker.Presentation.Entities\CarparkTracker.Presentation.Entities.csproj" />
+    <ProjectReference Include="..\CarparkTracker.Data.Contracts\CarparkTracker.Data.Contracts.csproj" />
   </ItemGroup>
 
 </Project>

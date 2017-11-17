@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CarparkTracker.Business.Entities\CarparkTracker.Business.Entities.csproj" />
+    <ProjectReference Include="..\CarparkTracker.Common.Entities\CarparkTracker.Common.Entities.csproj" />
   </ItemGroup>
 
 </Project>

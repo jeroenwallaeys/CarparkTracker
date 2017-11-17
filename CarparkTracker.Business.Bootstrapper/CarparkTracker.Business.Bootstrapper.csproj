@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CarparkTracker.Business.Handlers\CarparkTracker.Business.Handlers.csproj" />
+    <ProjectReference Include="..\CarparkTracker.Data.Web\CarparkTracker.Data.Web.csproj" />
     <ProjectReference Include="..\CarparkTracker.Presentation.Mappers\CarparkTracker.Presentation.Mappers.csproj" />
     <ProjectReference Include="..\CarparkTracker.Presentation.ViewModels.Contracts\CarparkTracker.Presentation.ViewModels.Contracts.csproj" />
     <ProjectReference Include="..\CarparkTracker.Presentation.ViewModels\CarparkTracker.Presentation.ViewModels.csproj" />

@@ -10,11 +10,19 @@ namespace CarparkTracker
 		{
 			InitializeComponent();
             BindingContext = Resolver.Get<ICarparsViewModel>();
-		}
+  		}
 
         private void ItemTapped_Carparks(object sender, ItemTappedEventArgs e)
         {
             Navigation.PushAsync(new CarparkDetailPage(e.Item));
+        }
+
+        protected override void OnAppearing()
+        {
+            var context = (ICarparsViewModel)BindingContext;
+            context.OnFormAppearing();
+
+            base.OnAppearing();
         }
     }
 }

@@ -2,5 +2,6 @@
 {
     public interface ICarparsViewModel
     {
+        void OnFormAppearing();
     }
 }

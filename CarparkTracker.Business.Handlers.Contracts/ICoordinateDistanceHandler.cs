@@ -1,4 +1,5 @@
 ﻿using CarparkTracker.Business.Entities;
+using CarparkTracker.Common.Entities;
 
 namespace CarparkTracker.Business.Handlers.Contracts
 {

@@ -1,4 +1,6 @@
-﻿namespace CarparkTracker.Business.Entities
+﻿using System;
+
+namespace CarparkTracker.Common.Entities
 {
     public class Coordinate
     {

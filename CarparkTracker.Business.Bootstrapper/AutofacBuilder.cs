@@ -1,6 +1,10 @@
 ﻿using Autofac;
 using CarparkTracker.Business.Handlers;
 using CarparkTracker.Business.Handlers.Contracts;
+using CarparkTracker.Data.Contracts.LocationTrackers;
+using CarparkTracker.Data.Contracts.WebRequests;
+using CarparkTracker.Data.Location;
+using CarparkTracker.Data.Web;
 using CarparkTracker.Presentation.Mappers;
 using CarparkTracker.Presentation.Mappers.Contracts;
 using CarparkTracker.Presentation.ViewModels;
@@ -20,6 +24,9 @@ namespace CarparkTracker.Business.Bootstrapper
             builder.RegisterType<CarparkMapper>().As<ICarparkMapper>();
             builder.RegisterType<CarparksViewModel>().As<ICarparsViewModel>();
 
+            builder.RegisterType<WebRequests>().As<IWebRequests>();
+            builder.RegisterType<LocationTracker>().As<ILocationTracker>();
+            
             return builder.Build();
         }
     }

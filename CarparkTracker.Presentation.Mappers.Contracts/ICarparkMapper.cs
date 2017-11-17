@@ -1,5 +1,6 @@
 ﻿using CarparkTracker.Business.Entities;
 using CarparkTracker.Business.Entities.Carparks;
+using CarparkTracker.Common.Entities;
 using CarparkTracker.Presentation.Entities;
 using System.Collections.Generic;
 

@@ -5,9 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CarparkTracker.Business.Entities\CarparkTracker.Business.Entities.csproj" />
     <ProjectReference Include="..\CarparkTracker.Common.Entities\CarparkTracker.Common.Entities.csproj" />
-    <ProjectReference Include="..\CarparkTracker.Presentation.Entities\CarparkTracker.Presentation.Entities.csproj" />
   </ItemGroup>
 
 </Project>

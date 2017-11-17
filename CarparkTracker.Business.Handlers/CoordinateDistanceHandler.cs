@@ -3,6 +3,7 @@ using CarparkTracker.Business.Entities;
 using CarparkTracker.Business.Handlers.UrlBuilders;
 using CarparkTracker.Business.Entities.DistanceMatrices;
 using System.Linq;
+using CarparkTracker.Common.Entities;
 
 namespace CarparkTracker.Business.Handlers
 {
