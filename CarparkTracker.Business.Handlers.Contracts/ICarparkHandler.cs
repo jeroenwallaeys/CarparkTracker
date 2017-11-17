@@ -4,6 +4,6 @@ namespace CarparkTracker.Business.Handlers.Contracts
 {
     public interface ICarparkHandler
     {
-        CarparksDto GetCarparks();
+        CarparkDto[] GetCarparks();
     }
 }

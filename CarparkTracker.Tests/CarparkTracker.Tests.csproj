@@ -67,7 +67,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Containers\NinjectTests.cs" />
-    <Compile Include="Handlers\CarparkHandlerTests.cs" />
     <Compile Include="Handlers\CoordinateDistanceHandlerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

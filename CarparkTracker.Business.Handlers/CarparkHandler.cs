@@ -13,9 +13,9 @@ namespace CarparkTracker.Business.Handlers
             _webRequestHandler = webRequestHandler;
         }
 
-        public CarparksDto GetCarparks()
+        public CarparkDto[] GetCarparks()
         {
-            return _webRequestHandler.GetXmlRequest<CarparksDto>(UrlBuilder.GetParkingsUrl());
+            return _webRequestHandler.GetXmlRequest<CarparkDto[]>(UrlBuilder.GetParkingsUrl());
         }
     }
 }

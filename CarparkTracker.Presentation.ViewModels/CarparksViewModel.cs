@@ -35,8 +35,6 @@ namespace CarparkTracker.Presentation.ViewModels
         {
             var carparks = _carparkHandler.GetCarparks();
             Carparks = new List<Carpark>(_carkparkMapper.GetCarparks(_carparkHandler.GetCarparks(), new Coordinate(51, 51)));
-            //var test = new LocationTracker();
-            //test.GetLocation();
         }
 
         public List<Carpark> Carparks

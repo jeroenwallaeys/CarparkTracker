@@ -1,5 +1,4 @@
-﻿using CarparkTracker.Business.Entities;
-using CarparkTracker.Business.Entities.Carparks;
+﻿using CarparkTracker.Business.Entities.Carparks;
 using CarparkTracker.Business.Handlers.Contracts;
 using CarparkTracker.Common.Entities;
 using CarparkTracker.Presentation.Entities;
@@ -22,15 +21,15 @@ namespace CarparkTracker.Presentation.Mappers
         {
             return new Carpark()
             {
-                AvailableSpaces = carpark.Capacity,
+                AvailableSpaces = carpark.CarparkStatus.AvailableCapacity,
                 DistanceTo = _distanceHandler.GetDistance(source, new Coordinate(carpark.Latitude, carpark.Longitude)),
                 Name = carpark.Name,
             };
         }
 
-        public IEnumerable<Carpark> GetCarparks(CarparksDto carParksDto, Coordinate source)
+        public IEnumerable<Carpark> GetCarparks(CarparkDto[] carparkDtoCollection, Coordinate source)
         {
-            return new List<Carpark>(carParksDto.Agency.Carparks.Select(cp => GetCarpark(cp, source)));
+            return new List<Carpark>(carparkDtoCollection.Select(cp => GetCarpark(cp, source)));
         }
     }
 }
