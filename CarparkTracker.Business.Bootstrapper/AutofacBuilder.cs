@@ -20,8 +20,9 @@ namespace CarparkTracker.Business.Bootstrapper
 
             builder.RegisterType<CarparkHandler>().As<ICarparkHandler>();
             builder.RegisterType<CoordinateDistanceHandler>().As<ICoordinateDistanceHandler>();
-            builder.RegisterType<WebRequestHandler>().As<IWebRequestHandler>();
+
             builder.RegisterType<CarparkMapper>().As<ICarparkMapper>();
+
             builder.RegisterType<CarparksViewModel>().As<ICarparsViewModel>();
 
             builder.RegisterType<WebRequests>().As<IWebRequests>();

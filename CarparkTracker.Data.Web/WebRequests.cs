@@ -35,12 +35,8 @@ namespace CarparkTracker.Data.Web
 
         private Stream GetRequest(string url)
         {
-            var request = (HttpWebRequest)WebRequest.Create(url);
-
-            using ( var response = (HttpWebResponse)request.GetResponse() )
-            {
-                return response.GetResponseStream();
-            }       
+            var response = (HttpWebResponse)((HttpWebRequest)WebRequest.Create(url)).GetResponse();
+            return response.GetResponseStream();
         }
     }
 }

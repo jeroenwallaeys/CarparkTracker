@@ -54,6 +54,9 @@
     <Reference Include="Moq, Version=4.7.145.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
       <HintPath>..\packages\Moq.4.7.145\lib\net45\Moq.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -67,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Containers\NinjectTests.cs" />
+    <Compile Include="Handlers\CarparkHandlerTests.cs" />
     <Compile Include="Handlers\CoordinateDistanceHandlerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -93,6 +97,14 @@
     <ProjectReference Include="..\CarparkTracker.Common.Containers\CarparkTracker.Common.Containers.csproj">
       <Project>{599D8482-C2DA-46D0-BCD8-18659887DFF3}</Project>
       <Name>CarparkTracker.Common.Containers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CarparkTracker.Data.Contracts\CarparkTracker.Data.Contracts.csproj">
+      <Project>{39F34AB7-FAC4-4285-A978-B13848623E34}</Project>
+      <Name>CarparkTracker.Data.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CarparkTracker.Data.Web\CarparkTracker.Data.Web.csproj">
+      <Project>{A82E7B56-F041-4C97-B467-6A81909D0E8A}</Project>
+      <Name>CarparkTracker.Data.Web</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

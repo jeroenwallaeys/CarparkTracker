@@ -1,24 +1,24 @@
 ﻿using CarparkTracker.Business.Handlers.Contracts;
-using CarparkTracker.Business.Entities;
 using CarparkTracker.Business.Handlers.UrlBuilders;
 using CarparkTracker.Business.Entities.DistanceMatrices;
 using System.Linq;
 using CarparkTracker.Common.Entities;
+using CarparkTracker.Data.Contracts.WebRequests;
 
 namespace CarparkTracker.Business.Handlers
 {
     public class CoordinateDistanceHandler : ICoordinateDistanceHandler
     {
-        private readonly IWebRequestHandler _webRequestHandler;
+        private readonly IWebRequests _webRequests;
 
-        public CoordinateDistanceHandler(IWebRequestHandler webRequestHandler)
+        public CoordinateDistanceHandler(IWebRequests webRequests)
         {
-            _webRequestHandler = webRequestHandler;
+            _webRequests = webRequests;
         }
 
         public int? GetDistance(Coordinate source, Coordinate destination)
         {
-            var distanceMatrix = _webRequestHandler.GetJsonRequest<DistanceMatrixResponseDto>
+            var distanceMatrix = _webRequests.GetJsonRequest<DistanceMatrixResponseDto>
                 (UrlBuilder.GetDistanceUrl(source, destination));
             return distanceMatrix?.Rows?.FirstOrDefault()?.Elements?.FirstOrDefault()?.Distance?.Value;
         }
