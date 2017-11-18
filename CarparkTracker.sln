@@ -7,8 +7,6 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CarparkTracker", "CarparkTr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarparkTracker.Android", "CarparkTracker\CarparkTracker.Android\CarparkTracker.Android.csproj", "{962E4FCF-5FE6-4756-B555-3ABE26CEE101}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarparkTracker.iOS", "CarparkTracker\CarparkTracker.iOS\CarparkTracker.iOS.csproj", "{8DDC0ED0-B7DA-4F6E-9F5A-C326E8E2C151}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarparkTracker.Common.Containers", "CarparkTracker.Common.Containers\CarparkTracker.Common.Containers.csproj", "{599D8482-C2DA-46D0-BCD8-18659887DFF3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarparkTracker.Business.Bootstrapper", "CarparkTracker.Business.Bootstrapper\CarparkTracker.Business.Bootstrapper.csproj", "{740C80B7-F5B5-430D-90D4-B7935BDEDEA2}"
@@ -35,13 +33,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarparkTracker.Data.Locatio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarparkTracker.Common.Entities", "CarparkTracker.Common.Entities\CarparkTracker.Common.Entities.csproj", "{A874AD3B-5AE9-4789-B510-7192C84008AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarparkTracker.Data.Web", "CarparkTracker.Data.Web\CarparkTracker.Data.Web.csproj", "{A82E7B56-F041-4C97-B467-6A81909D0E8A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarparkTracker.Data.Web", "CarparkTracker.Data.Web\CarparkTracker.Data.Web.csproj", "{A82E7B56-F041-4C97-B467-6A81909D0E8A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarparkTracker.Data.Contracts", "CarparkTracker.Data.Contracts\CarparkTracker.Data.Contracts.csproj", "{39F34AB7-FAC4-4285-A978-B13848623E34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarparkTracker.Data.Contracts", "CarparkTracker.Data.Contracts\CarparkTracker.Data.Contracts.csproj", "{39F34AB7-FAC4-4285-A978-B13848623E34}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		CarparkTracker\CarparkTracker\CarparkTracker.projitems*{8ddc0ed0-b7da-4f6e-9f5a-c326e8e2c151}*SharedItemsImports = 4
 		CarparkTracker\CarparkTracker\CarparkTracker.projitems*{8e37ad9c-612e-43aa-a10e-b94da01a7a33}*SharedItemsImports = 13
 		CarparkTracker\CarparkTracker\CarparkTracker.projitems*{962e4fcf-5fe6-4756-b555-3abe26cee101}*SharedItemsImports = 4
 	EndGlobalSection
@@ -144,38 +141,6 @@ Global
 		{962E4FCF-5FE6-4756-B555-3ABE26CEE101}.Release|x86.ActiveCfg = Release|Any CPU
 		{962E4FCF-5FE6-4756-B555-3ABE26CEE101}.Release|x86.Build.0 = Release|Any CPU
 		{962E4FCF-5FE6-4756-B555-3ABE26CEE101}.Release|x86.Deploy.0 = Release|Any CPU
-		{8DDC0ED0-B7DA-4F6E-9F5A-C326E8E2C151}.Ad-Hoc|Any CPU.ActiveCfg = Ad-Hoc|iPhoneSimulator
-		{8DDC0ED0-B7DA-4F6E-9F5A-C326E8E2C151}.Ad-Hoc|ARM.ActiveCfg = Ad-Hoc|iPhone
-		{8DDC0ED0-B7DA-4F6E-9F5A-C326E8E2C151}.Ad-Hoc|iPhone.ActiveCfg = Ad-Hoc|iPhone
-		{8DDC0ED0-B7DA-4F6E-9F5A-C326E8E2C151}.Ad-Hoc|iPhone.Build.0 = Ad-Hoc|iPhone
-		{8DDC0ED0-B7DA-4F6E-9F5A-C326E8E2C151}.Ad-Hoc|iPhoneSimulator.ActiveCfg = Ad-Hoc|iPhoneSimulator
-		{8DDC0ED0-B7DA-4F6E-9F5A-C326E8E2C151}.Ad-Hoc|iPhoneSimulator.Build.0 = Ad-Hoc|iPhoneSimulator
-		{8DDC0ED0-B7DA-4F6E-9F5A-C326E8E2C151}.Ad-Hoc|x64.ActiveCfg = Ad-Hoc|iPhone
-		{8DDC0ED0-B7DA-4F6E-9F5A-C326E8E2C151}.Ad-Hoc|x86.ActiveCfg = Ad-Hoc|iPhone
-		{8DDC0ED0-B7DA-4F6E-9F5A-C326E8E2C151}.AppStore|Any CPU.ActiveCfg = AppStore|iPhoneSimulator
-		{8DDC0ED0-B7DA-4F6E-9F5A-C326E8E2C151}.AppStore|ARM.ActiveCfg = AppStore|iPhone
-		{8DDC0ED0-B7DA-4F6E-9F5A-C326E8E2C151}.AppStore|iPhone.ActiveCfg = AppStore|iPhone
-		{8DDC0ED0-B7DA-4F6E-9F5A-C326E8E2C151}.AppStore|iPhone.Build.0 = AppStore|iPhone
-		{8DDC0ED0-B7DA-4F6E-9F5A-C326E8E2C151}.AppStore|iPhoneSimulator.ActiveCfg = AppStore|iPhoneSimulator
-		{8DDC0ED0-B7DA-4F6E-9F5A-C326E8E2C151}.AppStore|iPhoneSimulator.Build.0 = AppStore|iPhoneSimulator
-		{8DDC0ED0-B7DA-4F6E-9F5A-C326E8E2C151}.AppStore|x64.ActiveCfg = AppStore|iPhone
-		{8DDC0ED0-B7DA-4F6E-9F5A-C326E8E2C151}.AppStore|x86.ActiveCfg = AppStore|iPhone
-		{8DDC0ED0-B7DA-4F6E-9F5A-C326E8E2C151}.Debug|Any CPU.ActiveCfg = Debug|iPhoneSimulator
-		{8DDC0ED0-B7DA-4F6E-9F5A-C326E8E2C151}.Debug|ARM.ActiveCfg = Debug|iPhone
-		{8DDC0ED0-B7DA-4F6E-9F5A-C326E8E2C151}.Debug|iPhone.ActiveCfg = Debug|iPhone
-		{8DDC0ED0-B7DA-4F6E-9F5A-C326E8E2C151}.Debug|iPhone.Build.0 = Debug|iPhone
-		{8DDC0ED0-B7DA-4F6E-9F5A-C326E8E2C151}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
-		{8DDC0ED0-B7DA-4F6E-9F5A-C326E8E2C151}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
-		{8DDC0ED0-B7DA-4F6E-9F5A-C326E8E2C151}.Debug|x64.ActiveCfg = Debug|iPhone
-		{8DDC0ED0-B7DA-4F6E-9F5A-C326E8E2C151}.Debug|x86.ActiveCfg = Debug|iPhone
-		{8DDC0ED0-B7DA-4F6E-9F5A-C326E8E2C151}.Release|Any CPU.ActiveCfg = Release|iPhoneSimulator
-		{8DDC0ED0-B7DA-4F6E-9F5A-C326E8E2C151}.Release|ARM.ActiveCfg = Release|iPhone
-		{8DDC0ED0-B7DA-4F6E-9F5A-C326E8E2C151}.Release|iPhone.ActiveCfg = Release|iPhone
-		{8DDC0ED0-B7DA-4F6E-9F5A-C326E8E2C151}.Release|iPhone.Build.0 = Release|iPhone
-		{8DDC0ED0-B7DA-4F6E-9F5A-C326E8E2C151}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
-		{8DDC0ED0-B7DA-4F6E-9F5A-C326E8E2C151}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
-		{8DDC0ED0-B7DA-4F6E-9F5A-C326E8E2C151}.Release|x64.ActiveCfg = Release|iPhone
-		{8DDC0ED0-B7DA-4F6E-9F5A-C326E8E2C151}.Release|x86.ActiveCfg = Release|iPhone
 		{599D8482-C2DA-46D0-BCD8-18659887DFF3}.Ad-Hoc|Any CPU.ActiveCfg = Debug|Any CPU
 		{599D8482-C2DA-46D0-BCD8-18659887DFF3}.Ad-Hoc|Any CPU.Build.0 = Debug|Any CPU
 		{599D8482-C2DA-46D0-BCD8-18659887DFF3}.Ad-Hoc|ARM.ActiveCfg = Debug|Any CPU

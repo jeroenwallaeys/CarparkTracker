@@ -1,4 +1,6 @@
-﻿namespace CarparkTracker.Data.Contracts.WebRequests
+﻿using System.Threading.Tasks;
+
+namespace CarparkTracker.Data.Contracts.WebRequests
 {
     public interface IWebRequests
     {

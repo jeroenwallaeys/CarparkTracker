@@ -1,5 +1,5 @@
-﻿using CarparkTracker.Business.Entities;
-using CarparkTracker.Common.Entities;
+﻿using CarparkTracker.Common.Entities;
+using System.Threading.Tasks;
 
 namespace CarparkTracker.Business.Handlers.Contracts
 {

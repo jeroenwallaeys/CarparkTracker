@@ -18,8 +18,10 @@ namespace CarparkTracker.Business.Handlers
 
         public int? GetDistance(Coordinate source, Coordinate destination)
         {
-            var distanceMatrix = _webRequests.GetJsonRequest<DistanceMatrixResponseDto>
+            var distanceMatrix = _webRequests
+                .GetJsonRequest<DistanceMatrixResponseDto>
                 (UrlBuilder.GetDistanceUrl(source, destination));
+
             return distanceMatrix?.Rows?.FirstOrDefault()?.Elements?.FirstOrDefault()?.Distance?.Value;
         }
     }

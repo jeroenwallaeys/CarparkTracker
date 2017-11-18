@@ -19,17 +19,47 @@ namespace CarparkTracker.Presentation.Mappers
 
         public Carpark GetCarpark(CarparkDto carpark, Coordinate source)
         {
-            return new Carpark()
+            var availableCapacity = carpark.CarparkStatus.AvailableCapacity < 0 ? 0 : carpark.CarparkStatus.AvailableCapacity;
+
+            var newCarpark =  new Carpark()
             {
-                AvailableSpaces = carpark.CarparkStatus.AvailableCapacity,
+                AvailableSpaces = availableCapacity,
                 DistanceTo = _distanceHandler.GetDistance(source, new Coordinate(carpark.Latitude, carpark.Longitude)),
                 Name = carpark.Name,
+                Id = carpark.Id,
+                Coordinate = new Coordinate(carpark.Latitude, carpark.Longitude),
+                ColorFactor = GetColorFactor(availableCapacity),
+                MaximumSpaces = carpark.CarparkStatus.TotalCapacity,
+                IsOpen = carpark.CarparkStatus.IsOpen,
             };
+
+            return newCarpark;
         }
 
         public IEnumerable<Carpark> GetCarparks(CarparkDto[] carparkDtoCollection, Coordinate source)
         {
             return new List<Carpark>(carparkDtoCollection.Select(cp => GetCarpark(cp, source)));
+        }
+
+        public Carpark UpdateCarpark(Carpark original, CarparkDto updatedCarpark)
+        {
+            var availableCapacity = updatedCarpark.CarparkStatus.AvailableCapacity < 0 ? 0 : updatedCarpark.CarparkStatus.AvailableCapacity;
+
+            if ( updatedCarpark.CarparkStatus.AvailableCapacity > 0 )
+                original.AvailableSpaces = updatedCarpark.CarparkStatus.AvailableCapacity;
+            else
+                original.AvailableSpaces = 0;
+
+            original.ColorFactor = GetColorFactor(original.AvailableSpaces);
+            original.IsOpen = updatedCarpark.CarparkStatus.IsOpen;
+
+            return original;
+        }
+
+        private double GetColorFactor(double availableSpaces)
+        {
+            var spaces = availableSpaces < 100 ? availableSpaces : 100;
+            return 0.27 * ( spaces / 100 );
         }
     }
 }

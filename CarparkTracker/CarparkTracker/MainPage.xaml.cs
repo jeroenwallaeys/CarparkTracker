@@ -6,9 +6,13 @@ namespace CarparkTracker
 {
 	public partial class MainPage : ContentPage
 	{
+        bool _initialized;
+
 		public MainPage()
 		{
-			InitializeComponent();
+            _initialized = false;
+
+            InitializeComponent();
             BindingContext = Resolver.Get<ICarparsViewModel>();
   		}
 
@@ -17,12 +21,16 @@ namespace CarparkTracker
             Navigation.PushAsync(new CarparkDetailPage(e.Item));
         }
 
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
-            var context = (ICarparsViewModel)BindingContext;
-            context.OnFormAppearing();
+            if ( _initialized )
+                return;
 
+            var context = (ICarparsViewModel)BindingContext;
+            await context.OnFormAppearingFirstTime();
             base.OnAppearing();
+
+            _initialized = true;
         }
     }
 }

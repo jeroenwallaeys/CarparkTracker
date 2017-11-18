@@ -13,18 +13,20 @@ namespace CarparkTracker.Data.Web
         {
             try
             {
-                var stream = GetRequest(url);
+                    var stream = GetRequest(url);
 
-                if ( stream == null )
-                    return null;
+                    if ( stream == null )
+                        return null;
 
-                string text;
-                using ( var reader = new StreamReader(stream, Encoding.ASCII) )
-                {
-                    text = reader.ReadToEnd();
-                }
+                    string text;
+                    using ( var reader = new StreamReader(stream, Encoding.ASCII) )
+                    {
+                        text = reader.ReadToEnd();
+                    }
 
-                return JsonConvert.DeserializeObject<TDto>(text);
+                    return JsonConvert.DeserializeObject<TDto>(text);
+
+
             }
             catch ( Exception exception )
             {

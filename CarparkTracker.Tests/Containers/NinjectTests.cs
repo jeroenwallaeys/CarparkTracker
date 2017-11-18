@@ -1,8 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CarparkTracker.Common.Containers;
-using CarparkTracker.Business.Handlers.Contracts;
-using CarparkTracker.Business.Handlers;
-using System;
 using CarparkTracker.Business.Bootstrapper;
 using Autofac.Core.Registration;
 
