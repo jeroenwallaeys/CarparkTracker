@@ -200,6 +200,10 @@
       <Project>{740C80B7-F5B5-430D-90D4-B7935BDEDEA2}</Project>
       <Name>CarparkTracker.Business.Bootstrapper</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\CarparkTracker.Common.Configuration\CarparkTracker.Common.Configuration.csproj">
+      <Project>{4d82cd7e-afa8-4ce6-8a5f-a3a658a3c53b}</Project>
+      <Name>CarparkTracker.Common.Configuration</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\CarparkTracker.Common.Containers\CarparkTracker.Common.Containers.csproj">
       <Project>{599D8482-C2DA-46D0-BCD8-18659887DFF3}</Project>
       <Name>CarparkTracker.Common.Containers</Name>

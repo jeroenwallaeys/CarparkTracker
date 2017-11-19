@@ -1,4 +1,5 @@
-﻿using CarparkTracker.Common.Entities;
+﻿using CarparkTracker.Common.Configuration;
+using CarparkTracker.Common.Entities;
 using System.Web;
 
 namespace CarparkTracker.Business.Handlers.UrlBuilders
@@ -18,6 +19,7 @@ namespace CarparkTracker.Business.Handlers.UrlBuilders
 
         public static string GetParkingsUrl()
         {
+            return Settings.CarparkJsonFeed;
             return @"https://datatank.stad.gent/4/mobiliteit/bezettingparkingsrealtime.json";
         }
 
