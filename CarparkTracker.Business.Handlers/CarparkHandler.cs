@@ -1,13 +1,11 @@
 ﻿using CarparkTracker.Business.Entities.Carparks;
 using CarparkTracker.Business.Handlers.Contracts;
 using CarparkTracker.Business.Handlers.UrlBuilders;
-using CarparkTracker.Data.Contracts.LocationTrackers;
 using CarparkTracker.Data.Contracts.WebRequests;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Timers;
-using CarparkTracker.Common.Entities.EventArguments;
 using CarparkTracker.Common.Entities;
 using CarparkTracker.Business.Entities.EventArguments;
 
@@ -21,10 +19,8 @@ namespace CarparkTracker.Business.Handlers
         private readonly IWebRequests _webRequests;
         private CarparkDto[] _lastCarparkCollection;
         private Timer _timer;
-        private ILocationTracker _locationTracker;
 
         public event EventHandler<CarparksChangedEventArgs> CarparksChanged;
-        public event EventHandler<LocationChangedEventArgs> LocationChanged;
 
         public CarparkHandler(IWebRequests webRequests)
         {
