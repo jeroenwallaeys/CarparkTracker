@@ -10,15 +10,14 @@
                 <ColumnDefinition Width="40"/>
             </Grid.ColumnDefinitions>
 
-            <Label Text="{Binding Name}" Grid.Column="0" VerticalTextAlignment="Center"/>
+            <Label Text="{Binding Description}"
+                   Style="{StaticResource CaparkDescriptionLabelStyle}"
+                   Grid.Column="0"/>
 
             <Label Text="{Binding AvailableSpaces}"
-                   Margin="2"
-                   VerticalTextAlignment="Center"
                    Grid.Column="1"
                    x:Name="AvailableSpacesName"
-                   TextColor="White"
-                   HorizontalTextAlignment="Center"/>
+                   Style="{StaticResource AvailableSpacesLabelStyle}"/>
 
         </Grid>
     </ViewCell.View>

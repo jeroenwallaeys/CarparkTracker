@@ -35,7 +35,7 @@ namespace CarparkTracker.Tests.Mappers
         }
 
         [TestMethod]
-        public void GetCarparkTest()
+        public void GetCarparkMapperTest()
         {
             var distanceMock = new Mock<ICoordinateDistanceHandler>();
             distanceMock.Setup(m => m.GetDistance(It.IsAny<Coordinate>(), It.IsAny<Coordinate>())).Returns(1200);
@@ -49,6 +49,9 @@ namespace CarparkTracker.Tests.Mappers
             Assert.AreEqual(_carparkDto.Name, carpark.Name);
             Assert.AreEqual(_carparkDto.CarparkStatus.AvailableCapacity, carpark.AvailableSpaces);
             Assert.AreEqual(_carparkDto.CarparkStatus.IsOpen, carpark.IsOpen);
+            Assert.AreEqual(_carparkDto.Address, carpark.Address);
+            Assert.AreEqual(_carparkDto.Description, carpark.Description);
+            Assert.AreEqual(_carparkDto.ContactInfo, carpark.ContactDetails);
         }
 
         [TestMethod]

@@ -5,27 +5,18 @@ namespace CarparkTracker.Presentation.Entities
 {
     public class Carpark : PropertyChangedBase
     {
-        private string _name;
         private int _availableSpaces;
         private double _colorFactor;
         private bool _isOpen;
 
         public int Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public string ContactDetails { get; set; }
+        public string Address { get; set; }
         public int MaximumSpaces { get; set; }
         public Coordinate Coordinate { get; set; }
-
-        public string Name
-        {
-            get { return _name; }
-            set
-            {
-                if ( _name == value )
-                    return;
-
-                _name = value;
-                OnPropertyChanged();
-            }
-        }
+        public int? DistanceTo { get; set; }
 
         public int AvailableSpaces
         {
@@ -65,8 +56,5 @@ namespace CarparkTracker.Presentation.Entities
                 OnPropertyChanged();
             }
         }
-
-
-        public int? DistanceTo { get; set; }
     }
 }

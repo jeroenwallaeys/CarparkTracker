@@ -2,11 +2,13 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:CarparkTracker"
-             Title="Carpark locations"
+             Title="Parkings Gent"
              x:Class="CarparkTracker.MainPage">
     <ContentPage.Content>
         <Grid>
-            <ActivityIndicator Color="DeepSkyBlue" IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <ActivityIndicator Style="{StaticResource ActivityIndicatorStyle}"
+                               IsRunning="{Binding IsLoading}"
+                               IsVisible="{Binding IsLoading}"/>
             <ListView ItemsSource="{Binding Carparks}" ItemTapped="ItemTapped_Carparks">
                 <ListView.ItemTemplate>
                     <DataTemplate>

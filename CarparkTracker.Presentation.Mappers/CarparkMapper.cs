@@ -30,7 +30,10 @@ namespace CarparkTracker.Presentation.Mappers
                 Coordinate = new Coordinate(carpark.Latitude, carpark.Longitude),
                 ColorFactor = GetColorFactor(availableCapacity),
                 MaximumSpaces = carpark.CarparkStatus.TotalCapacity,
-                IsOpen = carpark.CarparkStatus.IsOpen,
+                IsOpen = carpark.CarparkStatus.IsOpen, 
+                Address = carpark.Address,
+                ContactDetails = carpark.ContactInfo,
+                Description = carpark.Description,
             };
 
             return newCarpark;

@@ -2,19 +2,20 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             Title="{Binding Description}"
              x:Class="CarparkTracker.CarparkDetailPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Name"/>
-            <Label Text="{Binding Name}"/>
-            
-            <Label Text="Name"/>
-            <Label Text="{Binding Name}"/>
-
-            <maps:Map WidthRequest="320" HeightRequest="200"
-                    x:Name="MyMap" TranslationX="{Binding Coordinate.Longitude}" TranslationY="{Binding Coordinate.Latitude}"
-                    IsShowingUser="False"  
-                    MapType="Street">
+        <StackLayout Margin="10">
+            <Label Text="{Binding Name}" Style="{StaticResource DetailsLabelStyle}"/>
+            <Label Text="{Binding Address}" Style="{StaticResource DetailsLabelStyle}"/>
+            <Label Text="{Binding ContactDetails}" Style="{StaticResource DetailsLabelStyle}"/>
+            <maps:Map x:Name="MyMap" VerticalOptions="StartAndExpand" BackgroundColor="Red"
+                      HeightRequest="200" WidthRequest="320"
+                      TranslationX="{Binding Coordinate.Longitude}"
+                      TranslationY="{Binding Coordinate.Latitude}"
+                      IsShowingUser="False"  
+                      MapType="Street"
+                      >
             </maps:Map>
 
 
@@ -22,8 +23,3 @@
     </ContentPage.Content>
 </ContentPage>
 
-<!-- the parking’s name, address, contact details and that shows a map with the parking’s location. 
-    
-    xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
-                <maps:Map WidthRequest="300" HeightRequest="200" IsShowingUser="true" MapType="Hybrid"></maps:Map>
-    -->
