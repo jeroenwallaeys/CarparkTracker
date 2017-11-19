@@ -8,35 +8,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Timers;
 using CarparkTracker.Common.Entities.EventArguments;
+using CarparkTracker.Common.Entities;
+using CarparkTracker.Business.Entities.EventArguments;
 
 namespace CarparkTracker.Business.Handlers
 {
     public class CarparkHandler : ICarparkHandler
     {
         private List<Action<IEnumerable<CarparkDto>>> _subscribersOnCarparkChanges;
+        private List<Action<Coordinate>> _subscribersOnLocationChanges;
+
         private readonly IWebRequests _webRequests;
         private CarparkDto[] _lastCarparkCollection;
-        private readonly Timer _timer;
+        private Timer _timer;
         private ILocationTracker _locationTracker;
+
+        public event EventHandler<CarparksChangedEventArgs> CarparksChanged;
+        public event EventHandler<LocationChangedEventArgs> LocationChanged;
 
         public CarparkHandler(IWebRequests webRequests, ILocationTracker locationTracker)
         {
             _webRequests = webRequests;
             _subscribersOnCarparkChanges = new List<Action<IEnumerable<CarparkDto>>>();
-            _timer = new Timer(20000);
-            _timer.Elapsed += Timer_Elapsed;
-            locationTracker.LocationUpdated += LocationTracker_LocationUpdated;
-            //var test = locationTracker.GetCurrentLocationAsync();
-        }
+            _subscribersOnLocationChanges = new List<Action<Coordinate>>();
+            _locationTracker = locationTracker;
 
-        private void LocationTracker_LocationUpdated(object sender, LocationChangedEventArgs e)
-        {
-
-        }
-
-        private CarparkDto[] GetNewCarparks()
-        {
-            return _webRequests.GetJsonRequest<CarparkDto[]>(UrlBuilder.GetParkingsUrl());
+            InitializeTimer();
+            InitializeLocationTracker();
         }
 
         public CarparkDto[] GetCarparks()
@@ -45,22 +43,26 @@ namespace CarparkTracker.Business.Handlers
             return _lastCarparkCollection;
         }
 
-        public void SubscribeOnCarparkChanges(Action<IEnumerable<CarparkDto>> action)
+        private void InitializeLocationTracker()
         {
-            if ( !_subscribersOnCarparkChanges.Contains(action) )
-                _subscribersOnCarparkChanges.Add(action);
-
-            if ( !_timer.Enabled )
-                _timer.Start();
+            _locationTracker.LocationUpdated += LocationTracker_LocationUpdated;
         }
 
-        public void Unsubscribe(Action<IEnumerable<CarparkDto>> action)
+        private void InitializeTimer()
         {
-            if ( _subscribersOnCarparkChanges.Contains(action) )
-                _subscribersOnCarparkChanges.Remove(action);
+            _timer = new Timer(20000);
+            _timer.Elapsed += Timer_Elapsed;
+            _timer.Start();
+        }
 
-            if ( !_subscribersOnCarparkChanges.Any() )
-                _timer.Stop();
+        private void LocationTracker_LocationUpdated(object sender, LocationChangedEventArgs e)
+        {
+            LocationChanged?.Invoke(this, e);
+        }
+
+        private CarparkDto[] GetNewCarparks()
+        {
+            return _webRequests.GetJsonRequest<CarparkDto[]>(UrlBuilder.GetParkingsUrl());
         }
 
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
@@ -86,12 +88,7 @@ namespace CarparkTracker.Business.Handlers
             _lastCarparkCollection = carParks;
 
             if ( carparksToUpdate.Any() )
-                NotifySubscribers(carparksToUpdate);
-        }
-
-        private void NotifySubscribers(IEnumerable<CarparkDto> updatedCarparks)
-        {
-            _subscribersOnCarparkChanges.ForEach(s => s.Invoke(updatedCarparks));
+                CarparksChanged?.Invoke(this, new CarparksChangedEventArgs(carparksToUpdate));
         }
     }
 }

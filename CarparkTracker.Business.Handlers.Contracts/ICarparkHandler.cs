@@ -1,14 +1,15 @@
 ﻿using CarparkTracker.Business.Entities.Carparks;
+using CarparkTracker.Business.Entities.EventArguments;
+using CarparkTracker.Common.Entities.EventArguments;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace CarparkTracker.Business.Handlers.Contracts
 {
     public interface ICarparkHandler
     {
         CarparkDto[] GetCarparks();
-        void SubscribeOnCarparkChanges(Action<IEnumerable<CarparkDto>> action);
-        void Unsubscribe(Action<IEnumerable<CarparkDto>> action);
+        event EventHandler<CarparksChangedEventArgs> CarparksChanged;
+        event EventHandler<LocationChangedEventArgs> LocationChanged; 
     }
 }

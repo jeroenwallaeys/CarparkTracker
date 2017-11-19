@@ -10,5 +10,6 @@ namespace CarparkTracker.Presentation.Mappers.Contracts
         Carpark GetCarpark(CarparkDto carpark, Coordinate source);
         IEnumerable<Carpark> GetCarparks(CarparkDto[] carparkDtoCollection, Coordinate source);
         Carpark UpdateCarpark(Carpark original, CarparkDto updatedCarpark);
+        IEnumerable<Carpark> UpdateDistances(IEnumerable<Carpark> oldCarparkCollection, Coordinate newLocation);
     }
 }

@@ -59,6 +59,16 @@ namespace CarparkTracker.Presentation.Mappers
             return original;
         }
 
+        public IEnumerable<Carpark> UpdateDistances(IEnumerable<Carpark> oldCarparkCollection, Coordinate newLocation)
+        {
+            foreach ( var carpark in oldCarparkCollection )
+            {
+                carpark.DistanceTo = _distanceHandler.GetDistance(newLocation, carpark.Coordinate);
+            }
+
+            return oldCarparkCollection;
+        }
+
         private double GetColorFactor(double availableSpaces)
         {
             var spaces = availableSpaces < 100 ? availableSpaces : 100;

@@ -6,9 +6,13 @@
              x:Class="CarparkTracker.CarparkDetailPage">
     <ContentPage.Content>
         <StackLayout Margin="10">
+            
             <Label Text="{Binding Name}" Style="{StaticResource DetailsLabelStyle}"/>
+            
             <Label Text="{Binding Address}" Style="{StaticResource DetailsLabelStyle}"/>
+            
             <Label Text="{Binding ContactDetails}" Style="{StaticResource DetailsLabelStyle}"/>
+
             <maps:Map x:Name="MyMap" VerticalOptions="StartAndExpand" BackgroundColor="Red"
                       HeightRequest="200" WidthRequest="320"
                       TranslationX="{Binding Coordinate.Longitude}"
@@ -17,7 +21,6 @@
                       MapType="Street"
                       >
             </maps:Map>
-
 
         </StackLayout>
     </ContentPage.Content>

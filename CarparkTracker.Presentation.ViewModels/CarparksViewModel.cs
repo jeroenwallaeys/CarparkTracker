@@ -5,10 +5,10 @@ using CarparkTracker.Presentation.ViewModels.Base;
 using CarparkTracker.Presentation.ViewModels.Contracts;
 using System.Collections.Generic;
 using CarparkTracker.Common.Entities;
-using CarparkTracker.Business.Entities.Carparks;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using System.Linq;
+using CarparkTracker.Business.Entities.EventArguments;
 
 namespace CarparkTracker.Presentation.ViewModels
 {
@@ -26,53 +26,15 @@ namespace CarparkTracker.Presentation.ViewModels
             _carkparkMapper = carkparkMapper;
         }
 
-        private void UpdateCarparks(IEnumerable<CarparkDto> updatedCarparks)
-        {
-            foreach ( var updatedCarpark in updatedCarparks )
-            {
-                var carparkToUpdate = Carparks.SingleOrDefault(c => c.Id == updatedCarpark.Id);
-                _carkparkMapper.UpdateCarpark(carparkToUpdate, updatedCarpark);
-            }
-        }
-
-        public async Task OnFormAppearingFirstTime()
-        {
-            IsLoading = true;
-            Carparks = await GetCarparkCollectionAsync();
-            _carparkHandler.SubscribeOnCarparkChanges(UpdateCarparks);
-            IsLoading = false;
-        }
-
-        private async Task<ObservableCollection<Carpark>> GetCarparkCollectionAsync()
-        {
-            return await Task.Run(() =>
-            {
-                var carparks = _carparkHandler.GetCarparks();
-                return new ObservableCollection<Carpark>(_carkparkMapper.GetCarparks(carparks, new Coordinate(51, 51)));
-            });
-        }
-
         public ObservableCollection<Carpark> Carparks
         {
             get { return _carparks; }
-            set {
+            set
+            {
                 if ( _carparks == value )
                     return;
 
                 _carparks = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public Coordinate Coordinates
-        {
-            get { return _coordinates; }
-            set
-            {
-                if ( _coordinates == value )
-                    return;
-
-                _coordinates = value;
                 OnPropertyChanged();
             }
         }
@@ -88,6 +50,44 @@ namespace CarparkTracker.Presentation.ViewModels
                 _isLoading = value;
                 OnPropertyChanged();
             }
+        }
+
+        public async Task OnFormAppearingFirstTime()
+        {
+            IsLoading = true;
+            var carparks = await GetCarparkCollectionAsync();
+            SortCarparks(carparks);
+            _carparkHandler.CarparksChanged += CarparkHandler_CarparksChanged;
+            _carparkHandler.LocationChanged += CarparkHandler_LocationChanged;
+            IsLoading = false;
+        }
+
+        private void CarparkHandler_LocationChanged(object sender, Common.Entities.EventArguments.LocationChangedEventArgs e)
+        {
+            SortCarparks(Carparks);
+        }
+
+        private void CarparkHandler_CarparksChanged(object sender, CarparksChangedEventArgs e)
+        {
+            foreach ( var updatedCarpark in e.ChangedCarparks )
+            {
+                var carparkToUpdate = Carparks.SingleOrDefault(c => c.Id == updatedCarpark.Id);
+                _carkparkMapper.UpdateCarpark(carparkToUpdate, updatedCarpark);
+            }
+        }
+
+        private void SortCarparks(IEnumerable<Carpark> carparks)
+        {
+            Carparks = new ObservableCollection<Carpark>(carparks.OrderBy(x => x.DistanceTo).OrderBy(x => x.Description).ToList());
+        }
+
+        private async Task<ObservableCollection<Carpark>> GetCarparkCollectionAsync()
+        {
+            return await Task.Run(() =>
+            {
+                var carparks = _carparkHandler.GetCarparks();
+                return new ObservableCollection<Carpark>(_carkparkMapper.GetCarparks(carparks, new Coordinate(51, 51)));
+            });
         }
     }
 }

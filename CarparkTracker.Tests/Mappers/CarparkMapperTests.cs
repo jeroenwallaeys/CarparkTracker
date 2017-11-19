@@ -5,6 +5,8 @@ using CarparkTracker.Presentation.Entities;
 using CarparkTracker.Presentation.Mappers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CarparkTracker.Tests.Mappers
 {
@@ -74,6 +76,26 @@ namespace CarparkTracker.Tests.Mappers
 
             Assert.AreEqual(oldCarpark.IsOpen, true);
             Assert.AreEqual(oldCarpark.AvailableSpaces, 5);
+        }
+
+        [TestMethod]
+        public void UpdateCarparkDistancesTest()
+        {
+            var distanceMock = new Mock<ICoordinateDistanceHandler>();
+            distanceMock.Setup(m => m.GetDistance(It.IsAny<Coordinate>(), It.IsAny<Coordinate>())).Returns(1200);
+            var mapper = new CarparkMapper(distanceMock.Object);
+
+            var oldCarparks = new List<Carpark>(){
+                new Carpark()
+                {
+                    Name = "Carpark1",
+                    DistanceTo = 500,
+                },
+            };
+
+            mapper.UpdateDistances(oldCarparks, new Coordinate(0,0));
+
+            Assert.AreEqual(oldCarparks.First().DistanceTo, 1200);
         }
     }
 }
