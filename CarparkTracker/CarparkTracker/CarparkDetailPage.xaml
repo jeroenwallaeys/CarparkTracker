@@ -2,24 +2,20 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
-             Title="{Binding Description}"
+             Title="{Binding Carpark.Description}"
              x:Class="CarparkTracker.CarparkDetailPage">
     <ContentPage.Content>
         <StackLayout Margin="10">
             
-            <Label Text="{Binding Name}" Style="{StaticResource DetailsLabelStyle}"/>
-            
-            <Label Text="{Binding Address}" Style="{StaticResource DetailsLabelStyle}"/>
-            
-            <Label Text="{Binding ContactDetails}" Style="{StaticResource DetailsLabelStyle}"/>
+            <Label Text="{Binding Carpark.Name}" Style="{StaticResource DetailsLabelStyle}"/>
 
-            <maps:Map x:Name="MyMap" VerticalOptions="StartAndExpand" BackgroundColor="Red"
-                      HeightRequest="200" WidthRequest="320"
-                      TranslationX="{Binding Coordinate.Longitude}"
-                      TranslationY="{Binding Coordinate.Latitude}"
+            <Label Text="{Binding Carpark.Address}" Style="{StaticResource DetailsLabelStyle}"/>
+
+            <Label Text="{Binding Carpark.ContactDetails}" Style="{StaticResource DetailsLabelStyle}"/>
+
+            <maps:Map x:Name="MyMap"
                       IsShowingUser="False"  
-                      MapType="Street"
-                      >
+                      MapType="Street">
             </maps:Map>
 
         </StackLayout>

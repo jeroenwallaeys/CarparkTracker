@@ -8,10 +8,12 @@
         <ResourceDictionary>
             
             <Style x:Key="DetailsLabelStyle"  TargetType="Label">
+                <Setter Property="FontAttributes" Value="Bold"/>
                 <Setter Property="HorizontalTextAlignment" Value="Center"/>
             </Style>
             
             <Style x:Key="CaparkDescriptionLabelStyle" TargetType="Label">
+                <Setter Property="FontAttributes" Value="Bold"/>
                 <Setter Property="Margin" Value="3"/>
                 <Setter Property="VerticalTextAlignment" Value="Center"/>
             </Style>

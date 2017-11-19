@@ -2,7 +2,7 @@
 
 namespace CarparkTracker.Presentation.ViewModels.Contracts
 {
-    public interface ICarparsViewModel
+    public interface ICarparsViewModel : IViewModel
     {
         Task OnFormAppearingFirstTime();
     }

@@ -196,6 +196,10 @@
       <Project>{599D8482-C2DA-46D0-BCD8-18659887DFF3}</Project>
       <Name>CarparkTracker.Common.Containers</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\CarparkTracker.Common.Entities\CarparkTracker.Common.Entities.csproj">
+      <Project>{A874AD3B-5AE9-4789-B510-7192C84008AE}</Project>
+      <Name>CarparkTracker.Common.Entities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\CarparkTracker.Presentation.Entities\CarparkTracker.Presentation.Entities.csproj">
       <Project>{EDF9196A-6CD2-4229-B04E-E8A0AFF0F2CF}</Project>
       <Name>CarparkTracker.Presentation.Entities</Name>

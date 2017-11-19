@@ -1,26 +1,29 @@
-﻿using Xamarin.Forms;
+﻿using CarparkTracker.Presentation.ViewModels.Contracts;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-//using Xamarin.Forms.Maps;
+using Xamarin.Forms.Maps;
 
 namespace CarparkTracker
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class CarparkDetailPage : ContentPage
 	{
-		public CarparkDetailPage (object dataContext)
+		public CarparkDetailPage (ICarparkDetailViewModel viewModel)
 		{
 			InitializeComponent ();
-            BindingContext = dataContext;
+            BindingContext = viewModel;
 
-            //MyMap.Pins.Add(
-            //       new Pin
-            //       {
-            //           Type = PinType.Place,
-            //           Position = new Position(37.79752, -122.40183),
-            //           Label = "Xamarin San Francisco Office",
-            //           Address = "394 Pacific Ave, San Francisco CA",
+            var mapSpan = MapSpan.FromCenterAndRadius(new Position(viewModel.Carpark.Coordinate.Latitude, viewModel.Carpark.Coordinate.Longitude), Distance.FromKilometers(0.5));
 
-            //       });
+            MyMap.MoveToRegion(mapSpan);
+            MyMap.Pins.Add(
+                   new Pin
+                   {
+                       Type = PinType.Place,
+                       Position = new Position(viewModel.Carpark.Coordinate.Latitude, viewModel.Carpark.Coordinate.Longitude),
+                       Label = viewModel.Carpark.Description,
+                       Address = viewModel.Carpark.Address,
+                   });
         }
 	}
 }
