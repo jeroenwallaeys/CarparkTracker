@@ -8,14 +8,11 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="40"/>
-                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
             <Label Text="{Binding Description}"
                    Style="{StaticResource CaparkDescriptionLabelStyle}"
                    Grid.Column="0"/>
-
-            <Label Text="{Binding DistanceTo}" Grid.Column="2"/>
 
             <Label Text="{Binding AvailableSpaces}"
                    Grid.Column="1"

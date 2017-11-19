@@ -27,7 +27,7 @@ namespace CarparkTracker.Data.Location
 
         public Coordinate GetCurrentLocationAsync()
         {
-            var result = _geolocator.GetPositionAsync().Result;
+            var result = _geolocator.GetPositionAsync(timeoutMilliseconds: 10000).Result;
             return result.GetCoordinate();
         }
     }

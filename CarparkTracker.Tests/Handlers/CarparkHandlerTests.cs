@@ -50,7 +50,7 @@ namespace CarparkTracker.Tests.Handlers
 
             var locationTrackerMock = new Mock<ILocationTracker>();
 
-            var carparkHandler = new CarparkHandler(webRequestsMock.Object, locationTrackerMock.Object);
+            var carparkHandler = new CarparkHandler(webRequestsMock.Object);
 
             var carparks = carparkHandler.GetCarparks();
 

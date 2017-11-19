@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using System.Linq;
 using CarparkTracker.Business.Entities.EventArguments;
+using System;
+using CarparkTracker.Common.Entities.EventArguments;
 
 namespace CarparkTracker.Presentation.ViewModels
 {
@@ -19,6 +21,8 @@ namespace CarparkTracker.Presentation.ViewModels
         private readonly IUserLocationHandler _userLocationHandler;
         private readonly ICarparkMapper _carkparkMapper;
         private bool _isLoading;
+
+        public event EventHandler<DisplayAlertEventArgs> DisplayAlertEvent;
 
         public CarparksViewModel(IHandlerFactory handlerFactory, ICarparkMapper carkparkMapper)
         {
@@ -79,7 +83,8 @@ namespace CarparkTracker.Presentation.ViewModels
         private void SortCarparks(IEnumerable<Carpark> carparks)
         {
             Carparks = new ObservableCollection<Carpark>(carparks
-                .OrderBy(x => x.DistanceTo)
+                .OrderBy(x => x.DistanceTo == null)
+                .ThenBy(x => x.DistanceTo)
                 .ThenBy(x => x.Description)
                 .ToList());
         }
@@ -88,8 +93,18 @@ namespace CarparkTracker.Presentation.ViewModels
         {
             return await Task.Run(() =>
             {
+                Coordinate currentLocation = null;
+                try
+                {
+                    currentLocation = _userLocationHandler.GetCurrentLocation();
+                }
+                catch (Exception exception)
+                {
+                    DisplayAlertEvent?.Invoke(this, new DisplayAlertEventArgs("Kan huidige locatie niet vinden, parkings zullen alfabetisch gerangschikt zijn"));
+                }
+
                 var carparks = _carparkHandler.GetCarparks();
-                return new ObservableCollection<Carpark>(_carkparkMapper.GetCarparks(carparks, new Coordinate(51,51)/*_userLocationHandler.GetCurrentLocation()*/));
+                return new ObservableCollection<Carpark>(_carkparkMapper.GetCarparks(carparks, currentLocation));
             });
         }
     }

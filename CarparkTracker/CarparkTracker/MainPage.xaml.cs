@@ -15,8 +15,15 @@ namespace CarparkTracker
 
             InitializeComponent();
             _viewModelFactory = Resolver.Get<IViewModelFactory>();
-            BindingContext = _viewModelFactory.Create<ICarparsViewModel>();
+            var carparksViewModel = _viewModelFactory.Create<ICarparsViewModel>();
+            BindingContext = carparksViewModel;
+            carparksViewModel.DisplayAlertEvent += CarparksViewModel_DisplayAlertEvent;
   		}
+
+        private void CarparksViewModel_DisplayAlertEvent(object sender, Common.Entities.EventArguments.DisplayAlertEventArgs e)
+        {
+            Device.BeginInvokeOnMainThread(() => DisplayAlert("Error", e.Message, "Ok"));
+        }
 
         private void ItemTapped_Carparks(object sender, ItemTappedEventArgs e)
         {

@@ -21,10 +21,14 @@ namespace CarparkTracker.Presentation.Mappers
         {
             var availableCapacity = carpark.CarparkStatus.AvailableCapacity < 0 ? 0 : carpark.CarparkStatus.AvailableCapacity;
 
+            int? distanceTo = null;
+            if ( source != null )
+                distanceTo = _distanceHandler.GetDistance(source, new Coordinate(carpark.Latitude, carpark.Longitude));
+
             var newCarpark =  new Carpark()
             {
                 AvailableSpaces = availableCapacity,
-                DistanceTo = _distanceHandler.GetDistance(source, new Coordinate(carpark.Latitude, carpark.Longitude)),
+                DistanceTo = distanceTo,
                 Name = carpark.Name,
                 Id = carpark.Id,
                 Coordinate = new Coordinate(carpark.Latitude, carpark.Longitude),
