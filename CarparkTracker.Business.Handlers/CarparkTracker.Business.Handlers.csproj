@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CarparkTracker.Business.Handlers.Contracts\CarparkTracker.Business.Handlers.Contracts.csproj" />
+    <ProjectReference Include="..\CarparkTracker.Common.Configuration\CarparkTracker.Common.Configuration.csproj" />
+    <ProjectReference Include="..\CarparkTracker.Common.Containers\CarparkTracker.Common.Containers.csproj" />
+    <ProjectReference Include="..\CarparkTracker.Common.Entities\CarparkTracker.Common.Entities.csproj" />
+    <ProjectReference Include="..\CarparkTracker.Data.Contracts\CarparkTracker.Data.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>

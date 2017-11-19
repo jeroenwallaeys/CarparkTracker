@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using CarparkTracker.Common.Configuration;
 
 using Xamarin.Forms;
 
@@ -12,16 +9,15 @@ namespace CarparkTracker
 		public App ()
 		{
 			InitializeComponent();
-
-			MainPage = new CarparkTracker.MainPage();
+            MainPage = GetMainPage();
 		}
 
 		protected override void OnStart ()
 		{
-			// Handle when your app starts
-		}
+            Settings.CarparkJsonFeed = @"https://datatank.stad.gent/4/mobiliteit/bezettingparkingsrealtime.json";
+        }
 
-		protected override void OnSleep ()
+        protected override void OnSleep ()
 		{
 			// Handle when your app sleeps
 		}
@@ -30,5 +26,10 @@ namespace CarparkTracker
 		{
 			// Handle when your app resumes
 		}
-	}
+
+        public static Page GetMainPage()
+        {
+            return new NavigationPage(new MainPage());
+        }
+    }
 }

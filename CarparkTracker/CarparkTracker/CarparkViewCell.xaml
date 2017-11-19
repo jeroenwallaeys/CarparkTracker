@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" 
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          x:Class="CarparkTracker.CarparkViewCell">
+  <ViewCell.View>
+        <Grid>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="40"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Text="{Binding Description}"
+                   Style="{StaticResource CaparkDescriptionLabelStyle}"
+                   Grid.Column="0"/>
+
+            <Label Text="{Binding AvailableSpaces}"
+                   Grid.Column="1"
+                   x:Name="AvailableSpacesName"
+                   Style="{StaticResource AvailableSpacesLabelStyle}"/>
+
+        </Grid>
+    </ViewCell.View>
+</ViewCell>

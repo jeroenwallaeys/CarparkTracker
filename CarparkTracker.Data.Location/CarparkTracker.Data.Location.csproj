@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xam.Plugin.Geolocator" Version="3.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CarparkTracker.Common.Entities\CarparkTracker.Common.Entities.csproj" />
+    <ProjectReference Include="..\CarparkTracker.Data.Contracts\CarparkTracker.Data.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>
