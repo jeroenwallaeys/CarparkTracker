@@ -59,25 +59,43 @@ namespace CarparkTracker.Presentation.ViewModels
 
         public async Task OnFormAppearingFirstTime()
         {
-            IsLoading = true;
-            SortCarparks(await GetCarparkCollectionAsync());
-            _carparkHandler.CarparksChanged += CarparkHandler_CarparksChanged;
-            _userLocationHandler.LocationChanged += CarparkHandler_LocationChanged;
-            IsLoading = false;
+            try
+            {
+                IsLoading = true;
+                SortCarparks(await GetCarparkCollectionAsync());
+                _carparkHandler.CarparksChanged += CarparkHandler_CarparksChanged;
+                _userLocationHandler.LocationChanged += CarparkHandler_LocationChanged;
+                IsLoading = false;
+            }
+            catch( Exception )
+            {
+                DisplayAlert("Probleem bij het laden van de data");
+            }
+
         }
 
-        private void CarparkHandler_LocationChanged(object sender, Common.Entities.EventArguments.LocationChangedEventArgs e)
+        private void CarparkHandler_LocationChanged(object sender, LocationChangedEventArgs e)
         {
             SortCarparks(Carparks);
         }
 
         private void CarparkHandler_CarparksChanged(object sender, CarparksChangedEventArgs e)
         {
-            foreach ( var updatedCarpark in e.ChangedCarparks )
+            try
             {
-                var carparkToUpdate = Carparks.SingleOrDefault(c => c.Id == updatedCarpark.Id);
-                _carkparkMapper.UpdateCarpark(carparkToUpdate, updatedCarpark);
+                foreach ( var updatedCarpark in e.ChangedCarparks )
+                {
+                    var carparkToUpdate = Carparks.SingleOrDefault(c => c.Id == updatedCarpark.Id);
+                    if ( carparkToUpdate == null )
+                        continue;
+                    _carkparkMapper.UpdateCarpark(carparkToUpdate, updatedCarpark);
+                }
             }
+            catch
+            {
+                DisplayAlert("Probleem bij het bijwerken van de parking data");
+            }
+
         }
 
         private void SortCarparks(IEnumerable<Carpark> carparks)
@@ -98,14 +116,19 @@ namespace CarparkTracker.Presentation.ViewModels
                 {
                     currentLocation = _userLocationHandler.GetCurrentLocation();
                 }
-                catch (Exception exception)
+                catch ( Exception )
                 {
-                    DisplayAlertEvent?.Invoke(this, new DisplayAlertEventArgs("Kan huidige locatie niet vinden, parkings zullen alfabetisch gerangschikt zijn"));
+                    DisplayAlert("Kan huidige locatie niet vinden, parkings zullen alfabetisch gerangschikt zijn");
                 }
 
                 var carparks = _carparkHandler.GetCarparks();
                 return new ObservableCollection<Carpark>(_carkparkMapper.GetCarparks(carparks, currentLocation));
             });
+        }
+
+        private void DisplayAlert(string message)
+        {
+            DisplayAlertEvent?.Invoke(this, new DisplayAlertEventArgs(message));
         }
     }
 }

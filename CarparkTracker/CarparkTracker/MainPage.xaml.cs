@@ -22,7 +22,7 @@ namespace CarparkTracker
 
         private void CarparksViewModel_DisplayAlertEvent(object sender, Common.Entities.EventArguments.DisplayAlertEventArgs e)
         {
-            Device.BeginInvokeOnMainThread(() => DisplayAlert("Error", e.Message, "Ok"));
+            Device.BeginInvokeOnMainThread(() => DisplayAlert("Fout", e.Message, "Ok"));
         }
 
         private void ItemTapped_Carparks(object sender, ItemTappedEventArgs e)
