@@ -20,14 +20,14 @@ namespace CarparkTracker.Data.Location
 
         public event EventHandler<LocationChangedEventArgs> LocationUpdated;
 
-        private void Current_PositionChanged(object sender, Plugin.Geolocator.Abstractions.PositionEventArgs e)
+        private void Current_PositionChanged(object sender, PositionEventArgs e)
         {
             LocationUpdated?.Invoke(this, new LocationChangedEventArgs(e.Position.GetCoordinate()));
         }
 
         public Coordinate GetCurrentLocationAsync()
         {
-            var result = _geolocator.GetPositionAsync(new TimeSpan(0, 0, 0, 10)).Result;
+            var result = _geolocator.GetPositionAsync().Result;
             return result.GetCoordinate();
         }
     }

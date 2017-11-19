@@ -89,7 +89,7 @@ namespace CarparkTracker.Presentation.ViewModels
             return await Task.Run(() =>
             {
                 var carparks = _carparkHandler.GetCarparks();
-                return new ObservableCollection<Carpark>(_carkparkMapper.GetCarparks(carparks, new Coordinate(51.123, 50.234)));
+                return new ObservableCollection<Carpark>(_carkparkMapper.GetCarparks(carparks, new Coordinate(51,51)/*_userLocationHandler.GetCurrentLocation()*/));
             });
         }
     }
