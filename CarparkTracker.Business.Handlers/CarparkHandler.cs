@@ -26,15 +26,13 @@ namespace CarparkTracker.Business.Handlers
         public event EventHandler<CarparksChangedEventArgs> CarparksChanged;
         public event EventHandler<LocationChangedEventArgs> LocationChanged;
 
-        public CarparkHandler(IWebRequests webRequests, ILocationTracker locationTracker)
+        public CarparkHandler(IWebRequests webRequests)
         {
             _webRequests = webRequests;
             _subscribersOnCarparkChanges = new List<Action<IEnumerable<CarparkDto>>>();
             _subscribersOnLocationChanges = new List<Action<Coordinate>>();
-            _locationTracker = locationTracker;
 
             InitializeTimer();
-            InitializeLocationTracker();
         }
 
         public CarparkDto[] GetCarparks()
@@ -43,21 +41,11 @@ namespace CarparkTracker.Business.Handlers
             return _lastCarparkCollection;
         }
 
-        private void InitializeLocationTracker()
-        {
-            _locationTracker.LocationUpdated += LocationTracker_LocationUpdated;
-        }
-
         private void InitializeTimer()
         {
             _timer = new Timer(20000);
             _timer.Elapsed += Timer_Elapsed;
             _timer.Start();
-        }
-
-        private void LocationTracker_LocationUpdated(object sender, LocationChangedEventArgs e)
-        {
-            LocationChanged?.Invoke(this, e);
         }
 
         private CarparkDto[] GetNewCarparks()

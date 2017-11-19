@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using CarparkTracker.Business.Handlers;
 using CarparkTracker.Business.Handlers.Contracts;
+using CarparkTracker.Business.Handlers.Factories;
 using CarparkTracker.Data.Contracts.LocationTrackers;
 using CarparkTracker.Data.Contracts.WebRequests;
 using CarparkTracker.Data.Location;
@@ -18,6 +19,8 @@ namespace CarparkTracker.Business.Bootstrapper
         {
             var builder = new ContainerBuilder();
 
+            builder.RegisterType<HandlerFactory>().As<IHandlerFactory>();
+            builder.RegisterType<UserLocationHandler>().As<IUserLocationHandler>();
             builder.RegisterType<CarparkHandler>().As<ICarparkHandler>();
             builder.RegisterType<CoordinateDistanceHandler>().As<ICoordinateDistanceHandler>();
 

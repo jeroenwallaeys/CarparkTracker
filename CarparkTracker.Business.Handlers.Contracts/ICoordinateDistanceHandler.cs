@@ -1,9 +1,8 @@
 ﻿using CarparkTracker.Common.Entities;
-using System.Threading.Tasks;
 
 namespace CarparkTracker.Business.Handlers.Contracts
 {
-    public interface ICoordinateDistanceHandler
+    public interface ICoordinateDistanceHandler : IHandler
     {
         int? GetDistance(Coordinate source, Coordinate destination);
     }

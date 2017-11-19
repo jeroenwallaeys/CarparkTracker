@@ -13,7 +13,7 @@ namespace CarparkTracker.Business.Handlers.UrlBuilders
                 .AddParameter("units", "metric")
                 .AddParameter("origins", source.ToString())
                 .AddParameter("destinations", destination.ToString())
-                .AddParameter("key", "AIzaSyAqkdavPO6kCk9p_qAjTm1DwjfeIYW1wR4");
+                .AddParameter("key", "AIzaSyDNTBAmpNwQLTPs7NaCSxnf9ObDY8v5gWk");
         }
 
         public static string GetParkingsUrl()

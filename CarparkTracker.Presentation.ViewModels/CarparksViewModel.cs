@@ -15,14 +15,15 @@ namespace CarparkTracker.Presentation.ViewModels
     public class CarparksViewModel : ViewModelBase, ICarparsViewModel
     {
         private ObservableCollection<Carpark> _carparks;
-        private Coordinate _coordinates;
         private readonly ICarparkHandler _carparkHandler;
+        private readonly IUserLocationHandler _userLocationHandler;
         private readonly ICarparkMapper _carkparkMapper;
         private bool _isLoading;
 
-        public CarparksViewModel(ICarparkHandler carparkHandler, ICarparkMapper carkparkMapper)
+        public CarparksViewModel(IHandlerFactory handlerFactory, ICarparkMapper carkparkMapper)
         {
-            _carparkHandler = carparkHandler;
+            _carparkHandler = handlerFactory.Create<ICarparkHandler>();
+            _userLocationHandler = handlerFactory.Create<IUserLocationHandler>();
             _carkparkMapper = carkparkMapper;
         }
 
@@ -55,10 +56,9 @@ namespace CarparkTracker.Presentation.ViewModels
         public async Task OnFormAppearingFirstTime()
         {
             IsLoading = true;
-            var carparks = await GetCarparkCollectionAsync();
-            SortCarparks(carparks);
+            SortCarparks(await GetCarparkCollectionAsync());
             _carparkHandler.CarparksChanged += CarparkHandler_CarparksChanged;
-            _carparkHandler.LocationChanged += CarparkHandler_LocationChanged;
+            _userLocationHandler.LocationChanged += CarparkHandler_LocationChanged;
             IsLoading = false;
         }
 
@@ -78,7 +78,10 @@ namespace CarparkTracker.Presentation.ViewModels
 
         private void SortCarparks(IEnumerable<Carpark> carparks)
         {
-            Carparks = new ObservableCollection<Carpark>(carparks.OrderBy(x => x.DistanceTo).OrderBy(x => x.Description).ToList());
+            Carparks = new ObservableCollection<Carpark>(carparks
+                .OrderBy(x => x.DistanceTo)
+                .ThenBy(x => x.Description)
+                .ToList());
         }
 
         private async Task<ObservableCollection<Carpark>> GetCarparkCollectionAsync()
@@ -86,7 +89,7 @@ namespace CarparkTracker.Presentation.ViewModels
             return await Task.Run(() =>
             {
                 var carparks = _carparkHandler.GetCarparks();
-                return new ObservableCollection<Carpark>(_carkparkMapper.GetCarparks(carparks, new Coordinate(51, 51)));
+                return new ObservableCollection<Carpark>(_carkparkMapper.GetCarparks(carparks, new Coordinate(51.123, 50.234)));
             });
         }
     }
